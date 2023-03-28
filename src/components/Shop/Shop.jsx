@@ -21,12 +21,23 @@ const Shop = () => {
     addToDb(product.id);
   };
 
-
+  // Set cart to local storage
   useEffect(() => {
-    const storeCart = getShoppingCart();
-    console.log(storeCart);
-  },[])
-
+    const storedCart = getShoppingCart();
+    const savedCart = [];
+    // step 1: get id
+    for (const id in storedCart) {
+      // step 2: get the product by using the id
+      const addedProduct = products.find((product) => product.id === id);
+      if (addedProduct) {
+        const quantity = storedCart[id];
+        addedProduct.quantity = quantity;
+        savedCart.push(addedProduct);
+        console.log(addedProduct);
+      }
+    }
+    setCart(savedCart);
+  }, [products]);
 
   return (
     <div className="shop-container">

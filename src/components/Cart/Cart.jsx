@@ -11,7 +11,7 @@ const Cart = ({ cart }) => {
 
   const tax = (totalPrice * 7) / 100;
   const grandTotal = totalPrice + totalShipping + tax;
-  console.log(cart)
+//   console.log(cart)
   return (
     <div className="cart">
       <h3>Order summary</h3>
