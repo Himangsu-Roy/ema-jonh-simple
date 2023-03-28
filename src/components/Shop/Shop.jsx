@@ -16,7 +16,19 @@ const Shop = () => {
   }, []);
 
   const handleAddToCart = (product) => {
-    const newCart = [...cart, product];
+    // const newCart = [...cart, product];
+    let newCart = []
+    // if product doesn't exist in the cart then set quantity = 1;
+    // if exist update quantity by 1;
+    const exists = cart.find(pd => pd.id === product.id);
+    if (!exists) {
+      product.quantity = 1;
+      newCart = [...cart, product];
+    }else {
+      product.quantity = exists.quantity + 1;
+      newCart = [...cart];
+    }
+    
     setCart(newCart);
     addToDb(product.id);
   };
@@ -58,3 +70,20 @@ const Shop = () => {
 };
 
 export default Shop;
+
+
+
+
+
+// if (!newCart.find((p) => p.id === product.id)) {
+//   newCart.push({
+//     id: product.id,
+//     name: product.name,
+//     price: product.price,
+//     quantity: 1,
+//   });
+// } else {
+//   newCart.find((p) => p.id === product.id).quantity++;
+// }
+// setCart(newCart);
+// addToDb(newCart);
