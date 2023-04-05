@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useLoaderData } from 'react-router-dom';
 import Cart from '../components/Cart/Cart';
 import ReviewItem from '../components/ReviewItem/ReviewItem';
-import { removeFromDb } from '../utilities/fakedb';
+import { deleteShoppingCart, removeFromDb } from '../utilities/fakedb';
 import "./Orders.css";
 
 const Orders = () => {
@@ -16,6 +16,11 @@ const Orders = () => {
         removeFromDb(id)
     }
 
+    const handleClearCart = () => {
+        setCart([]);
+        deleteShoppingCart()
+    }
+
     return (
         <div className='shop-container'>
             <div className='review-container'>
@@ -26,7 +31,7 @@ const Orders = () => {
             }
             </div>
             <div className='cart-container'>
-                <Cart cart={cart}></Cart>
+                <Cart cart={cart} handleClearCart={handleClearCart}></Cart>
             </div>
         </div>
     );

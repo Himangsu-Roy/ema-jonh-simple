@@ -4,3 +4,18 @@
     position: sticky;
     top: 0;
 }
+
+.btn-clear-cart {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    margin: 10px auto;
+    padding: 10px;
+    background-color: #ff3030;
+    border: 0;
+    cursor: pointer;
+}
+
+.font-icon {
+    font-size: 15px;
+}
